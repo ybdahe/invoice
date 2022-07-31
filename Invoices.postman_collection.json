@@ -1,0 +1,531 @@
+{
+	"info": {
+		"_postman_id": "7947c485-55bf-49b8-aeab-3636d6aef959",
+		"name": "Invoices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6346576"
+	},
+	"item": [
+		{
+			"name": "getClient",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/clients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clients"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getClient",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/clients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clients"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 31 Jul 2022 11:47:18 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"clientName\": \"Pizza House 1\",\n        \"status\": \"active\",\n        \"email\": \"pizza1@pizzhouase.com\",\n        \"fees\": 1,\n        \"createdAt\": \"2022-07-31T14:43:45\",\n        \"modifiedAt\": null,\n        \"billing-interval\": \"daily\",\n        \"fees-type\": \"flat-fee\"\n    },\n    {\n        \"id\": 2,\n        \"clientName\": \"Pizza House 2\",\n        \"status\": \"active\",\n        \"email\": \"pizza2@pizzhouase.com\",\n        \"fees\": 2,\n        \"createdAt\": \"2022-07-31T14:44:00\",\n        \"modifiedAt\": null,\n        \"billing-interval\": \"monthly\",\n        \"fees-type\": \"flat-fee\"\n    },\n    {\n        \"id\": 3,\n        \"clientName\": \"Pizza House 3\",\n        \"status\": \"active\",\n        \"email\": \"pizza3@pizzhouase.com\",\n        \"fees\": 3,\n        \"createdAt\": \"2022-07-31T14:44:10\",\n        \"modifiedAt\": null,\n        \"billing-interval\": \"monthly\",\n        \"fees-type\": \"flat-fee\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "getInvoice",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/invoice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"invoice"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getInvoice",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/invoice?clientName=Pizza House 2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"invoice"
+							],
+							"query": [
+								{
+									"key": "clientName",
+									"value": "Pizza House 2"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 31 Jul 2022 11:48:05 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"invoiceId\": \"INV-2005492582\",\n    \"clientName\": \"Pizza House 2\",\n    \"billingInterval\": \"monthly\",\n    \"transactions\": [\n        {\n            \"orderId\": \"123454\",\n            \"orderName\": \"Pizza Veg\",\n            \"amount\": 55,\n            \"currency\": \"USD\",\n            \"transactionDate\": \"2022-07-30T15:14:57\",\n            \"fee\": 2,\n            \"refundFee\": 0,\n            \"cardType\": \"master\",\n            \"status\": \"APPROVED\"\n        },\n        {\n            \"orderId\": \"123455\",\n            \"orderName\": \"Pizza Veg 1\",\n            \"amount\": 55,\n            \"currency\": \"USD\",\n            \"transactionDate\": \"2022-07-30T16:14:57\",\n            \"fee\": 2,\n            \"refundFee\": 0,\n            \"cardType\": \"visa\",\n            \"status\": \"APPROVED\"\n        },\n        {\n            \"orderId\": \"123456\",\n            \"orderName\": \"Pizza Veg 2\",\n            \"amount\": 55,\n            \"currency\": \"USD\",\n            \"transactionDate\": \"2022-07-30T16:14:57\",\n            \"fee\": 2,\n            \"refundFee\": 0,\n            \"cardType\": \"master\",\n            \"status\": \"APPROVED\"\n        }\n    ],\n    \"totalBillingAmount\": 6,\n    \"feeChargesAmount\": 6,\n    \"refundAmount\": 0\n}"
+				},
+				{
+					"name": "getInvoice",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/invoice?clientName=Pizza House 1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"invoice"
+							],
+							"query": [
+								{
+									"key": "clientName",
+									"value": "Pizza House 1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 31 Jul 2022 11:48:23 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"invoiceId\": \"INV--899471742\",\n    \"clientName\": \"Pizza House 1\",\n    \"billingInterval\": \"daily\",\n    \"transactions\": [\n        {\n            \"orderId\": \"123459\",\n            \"orderName\": \"Pizza Veg 4\",\n            \"amount\": 55,\n            \"currency\": \"USD\",\n            \"transactionDate\": \"2022-07-31T10:14:57\",\n            \"fee\": 1,\n            \"refundFee\": 0,\n            \"cardType\": \"master\",\n            \"status\": \"APPROVED\"\n        },\n        {\n            \"orderId\": \"123450\",\n            \"orderName\": \"Veg Pizza\",\n            \"amount\": 30,\n            \"currency\": \"USD\",\n            \"transactionDate\": \"2022-07-31T10:14:57\",\n            \"fee\": 0,\n            \"refundFee\": 1,\n            \"cardType\": \"visa\",\n            \"status\": \"REFUNDED\"\n        }\n    ],\n    \"totalBillingAmount\": 2,\n    \"feeChargesAmount\": 1,\n    \"refundAmount\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "getTransactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"transactions"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getTransactions",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/transactions?clientName=Pizza House 3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "clientName",
+									"value": "Pizza House 3"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 31 Jul 2022 11:16:19 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 8,\n        \"orderId\": \"123457\",\n        \"transactionDate\": \"2022-07-31T11:14:57\",\n        \"orderName\": \"Pizza Veg 3\",\n        \"amount\": 55,\n        \"currency\": \"USD\",\n        \"cardType\": \"master\",\n        \"status\": \"approved\",\n        \"clientName\": \"Pizza House 3\",\n        \"createdAt\": \"2022-07-31T14:48:13\",\n        \"modifiedAt\": null\n    },\n    {\n        \"id\": 9,\n        \"orderId\": \"123458\",\n        \"transactionDate\": \"2022-07-31T12:14:57\",\n        \"orderName\": \"Pizza Veg 4\",\n        \"amount\": 55,\n        \"currency\": \"USD\",\n        \"cardType\": \"master\",\n        \"status\": \"approved\",\n        \"clientName\": \"Pizza House 3\",\n        \"createdAt\": \"2022-07-31T14:48:24\",\n        \"modifiedAt\": null\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "addClients",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/clients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clients"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "POST",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"clientName\": \"Pizza House 3\",\r\n\"status\":\"active\",\r\n\"billing-interval\":\"monthly\", \r\n\"email\":\"pizza3@pizzhouase.com\", \r\n\"fees-type\": \"flat-fee\",\r\n\"fees\": \"3.00\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clients"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 31 Jul 2022 10:44:10 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 3,\n    \"clientName\": \"Pizza House 3\",\n    \"status\": \"active\",\n    \"email\": \"pizza3@pizzhouase.com\",\n    \"fees\": 3,\n    \"createdAt\": \"2022-07-31T14:44:10.1395675\",\n    \"modifiedAt\": null,\n    \"billing-interval\": \"monthly\",\n    \"fees-type\": \"flat-fee\"\n}"
+				}
+			]
+		},
+		{
+			"name": "addTransactions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"orderId\":\"123458\",\r\n\"transactionDate\":\"2022-07-30 23:18:01\",\r\n\"orderName\":\"Veg Pizza\",\r\n\"amount\":\"64.00\",\r\n\"currency\":\"USD\",\r\n\"cardType\": \"master\", \r\n\"status\":\"approved\", \r\n\"clientName\":\"Pizza House 2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"transactions"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "addTransactions",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"orderId\":\"123450\",\r\n\"transactionDate\":\"2022-07-31T10:14:57\",\r\n\"orderName\":\"Veg Pizza\",\r\n\"amount\":\"30.00\",\r\n\"currency\":\"USD\",\r\n\"cardType\": \"visa\", \r\n\"status\":\"refunded\", \r\n\"clientName\":\"Pizza House 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transactions"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 31 Jul 2022 10:52:55 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 11,\n    \"orderId\": \"123450\",\n    \"transactionDate\": \"2022-07-31T10:14:57\",\n    \"orderName\": \"Veg Pizza\",\n    \"amount\": 30,\n    \"currency\": \"USD\",\n    \"cardType\": \"visa\",\n    \"status\": \"refunded\",\n    \"clientName\": \"Pizza House 1\",\n    \"createdAt\": \"2022-07-31T14:52:55.7805709\",\n    \"modifiedAt\": null\n}"
+				}
+			]
+		}
+	]
+}
